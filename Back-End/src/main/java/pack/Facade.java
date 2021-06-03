@@ -1,7 +1,5 @@
 package pack;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.ejb.Singleton;
@@ -25,32 +23,6 @@ public class Facade {
 
 	@PersistenceContext
 	private EntityManager em;
-	private Collection<Help> helps = new ArrayList<Help>();
-
-	@GET
-	@Path("/Help")
-	@Consumes({ "application/json" })
-	@Produces({ "application/json" })
-	public Collection<Help> Help() {
-		if (helps.isEmpty()) {
-			java.lang.reflect.Method[] Methodes = Facade.class.getDeclaredMethods();
-			int i = 1;
-			for (Method m : Methodes) {
-				if (!m.getName().equals("Help")) {
-					Help h = new Help();
-					h.setAnnontation(m.getAnnotations()[0].toString().replace("@javax.ws.rs.", "").replace("()", ""));
-					h.setPath(m.getAnnotation(Path.class).value());
-					h.setNom(m.getName());
-					h.setType(m.getReturnType().toString());
-					h.setId(i);
-					helps.add(h);
-					i++;
-					em.persist(h);
-				}
-			}
-		}
-		return em.createQuery("from Help", Help.class).getResultList();
-	}
 
 	/////////////////////////////////////////////////////////////////////////  
 
@@ -237,64 +209,7 @@ public class Facade {
 		return p;
 	}
 
-	/////////////////////////////////////////////////////////////////////////  
-
-	// Traitement des Numeros
-	// Ajouter un Numero à la base de donnee
-	@POST
-	@Path("/AddNumero")
-	@Consumes({ "application/json" })
-	public void AddNumero(Numero n) {
-		em.persist(n);
-	}
-
-	// recuperer la liste des Numeros
-	@GET
-	@Path("/GetNumero")
-	@Produces({ "application/json" })
-	public Collection<Numero> GetNumero() {
-		return em.createQuery("from Numero", Numero.class).getResultList();
-	}
-
-	// Update un Numero
-	@PUT
-	@Path("/UpdateNumero/{id}")
-	@Consumes({ "application/json" })
-	@Produces({ "application/json" })
-	public void UpdateNumero(@PathParam("id") int NumeroId, Numero nn) {
-		Numero n = em.find(Numero.class, NumeroId);
-		if (n == null)
-			throw new RuntimeException("Numero introuvable");
-		n.setIndicateur(n.getIndicateur());
-		n.setNum(nn.getNum());
-		n.setPays(nn.getPays());
-		em.merge(n);
-	}
-
-	// Supprimer un Numero
-	@DELETE
-	@Path("/DeleteNumero/{id}")
-	@Consumes({ "application/json" })
-	@Produces({ "application/json" })
-	public void DeleteNumero(@PathParam("id") int NumeroId) {
-		Numero n = em.find(Numero.class, NumeroId);
-		if (n == null)
-			throw new RuntimeException("Numero introuvable");
-		em.remove(n);
-	}
-
-	// recuperer un Numero à partir de son Id
-	@GET
-	@Path("/GetNumeroById/{id}")
-	@Consumes({ "application/json" })
-	@Produces({ "application/json" })
-	public Numero GetNumeroById(@PathParam("id") int NumeroId) {
-		Numero n = em.find(Numero.class, NumeroId);
-		if (n == null)
-			throw new RuntimeException("Numero introuvable");
-		return n;
-	}
-
+	
 	/////////////////////////////////////////////////////////////////////////  
 
 	// Traitement des Logins
@@ -479,63 +394,6 @@ public class Facade {
 		return c;
 	}
 
-
-	/////////////////////////////////////////////////////////////////////////  
-
-	//Traitement des Adresses
-	//Ajouter un Adresse à la base de donnee
-	@POST
-	@Path("/AddAdresse")
-	@Consumes({ "application/json" })
-	public void AddAdresse(Adresse a) {
-		em.persist(a);
-	}
-
-	//recuperer la liste des Adresses
-	@GET
-	@Path("/GetAdresse")
-	@Produces({ "application/json" })
-	public Collection<Adresse> GetAdresse() {
-		return em.createQuery("from Adresse", Adresse.class).getResultList();
-	}
-
-	//Update un Adresse
-	@PUT
-	@Path("/UpdateAdresse/{id}")
-	@Consumes({ "application/json" })
-	@Produces({ "application/json" })
-	public void UpdateAdresse(@PathParam("id") int AdresseId, Adresse na) {
-		Adresse a = em.find(Adresse.class, AdresseId);
-		if (a == null) throw new RuntimeException("Adresse introuvable");
-		a.setCodePostal(na.getCodePostal());
-		a.setNum(na.getNum());
-		a.setPays(na.getPays());
-		a.setRue(na.getRue());
-		a.setVille(na.getVille());
-		em.merge(a);
-	}
-
-	//Supprimer un Adresse
-	@DELETE
-	@Path("/DeleteAdresse/{id}")
-	@Consumes({ "application/json" })
-	@Produces({ "application/json" })
-	public void DeleteAdresse(@PathParam("id") int AdresseId) {
-		Adresse a = em.find(Adresse.class, AdresseId);
-		if (a == null) throw new RuntimeException("Adresse introuvable");
-		em.remove(a);
-	}
-
-	//recuperer un Citoyen à partir de son Id
-	@GET
-	@Path("/GetAdresseById/{id}")
-	@Consumes({ "application/json" })
-	@Produces({ "application/json" })
-	public Adresse GetAdresseById(@PathParam("id") int AdresseId) {
-		Adresse a = em.find(Adresse.class, AdresseId);
-		if (a == null) throw new RuntimeException("Adresse introuvable");
-		return a;
-	}
 	
 	// Traitement des Actualite
 	// Ajouter une Actualite à la base de donnee

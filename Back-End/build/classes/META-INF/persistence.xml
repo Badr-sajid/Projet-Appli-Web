@@ -5,18 +5,19 @@
         
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
         
-        
-        <class>pack.Adresse</class>
+        <class>pack.Actualite</class>
         <class>pack.Candidature</class>
         <class>pack.Citoyen</class>
         <class>pack.Demande</class>
-        <class>pack.Help</class>
+        <class>pack.DemandeCarteSejour</class>
+        <class>pack.DemandeImmatriculation</class>
+        <class>pack.DemandePasseport</class>
         <class>pack.Fonctionnaire</class>
         <class>pack.Login</class>
-        <class>pack.Numero</class>
         <class>pack.Offre</class>
         <class>pack.Plainte</class>
         <class>pack.Question</class>
+        <class>pack.UrlDocument</class>
         
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>

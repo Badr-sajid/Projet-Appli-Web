@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre 2/Libraries/hibernate-jpa-2.1-api-1.0.0.Final-redhat-1.jar"/>
-	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre 2/Libraries/jackson-annotations-2.5.4.redhat-1.jar"/>
-	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre 2/Libraries/jboss-ejb-api_3.2_spec-1.0.0.Final-redhat-1.jar"/>
-	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre 2/Libraries/jboss-jaxrs-api_2.0_spec-1.0.0.Final-redhat-1.jar"/>
-	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre 2/Libraries/jboss-servlet-api_3.1_spec-1.0.0.Final-redhat-1.jar"/>
+	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre/MonCitoyen/Libraries/hibernate-jpa-2.1-api-1.0.0.Final-redhat-1.jar"/>
+	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre/MonCitoyen/Libraries/jackson-annotations-2.5.4.redhat-1.jar"/>
+	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre/MonCitoyen/Libraries/jboss-ejb-api_3.2_spec-1.0.0.Final-redhat-1.jar"/>
+	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre/MonCitoyen/Libraries/jboss-jaxrs-api_2.0_spec-1.0.0.Final-redhat-1.jar"/>
+	<classpathentry kind="lib" path="/Users/badrsajid/Desktop/dossier sans titre/MonCitoyen/Libraries/jboss-servlet-api_3.1_spec-1.0.0.Final-redhat-1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
